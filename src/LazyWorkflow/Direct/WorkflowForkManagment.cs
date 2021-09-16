@@ -6,23 +6,26 @@ using System.Threading.Tasks;
 
 namespace Workflow.Direct
 {
-    public class WorkflowManager<T> : IWorkflowManager<T>, IDisposable
+    public class WorkflowForkManagment<T> : IWorkflowForkManagment<T>, IDisposable
     {
         private readonly Func<T, int> _getMessageKey;
         private readonly IWorkerFactory<T> _workerFactory;
+        private readonly IWorkflowSettings _settings;
         private readonly ConcurrentDictionary<int, CacheValue<T>> _workers;
 
         private Timer _cleanupTimer;
         private bool _disposed;
 
-        public WorkflowManager(
+        public WorkflowForkManagment(
             Func<T, int> getMessageKey,
-            IWorkerFactory<T> workerFactory)
+            IWorkerFactory<T> workerFactory,
+            IWorkflowSettings settings)
         {
             _getMessageKey = getMessageKey;
             _workerFactory = workerFactory;
-            _workers = new ConcurrentDictionary<int, CacheValue<T>>(2, 1024);
-            _cleanupTimer = new Timer(CleanUp, null, TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(20));
+            _settings = settings;
+            _workers = new ConcurrentDictionary<int, CacheValue<T>>(2, settings.WorkersCapacity);
+            _cleanupTimer = new Timer(CleanUp, null, settings.CleanupPeriod, settings.CleanupPeriod);
             _disposed = false;
         }
 
@@ -62,14 +65,15 @@ namespace Workflow.Direct
         private CacheValue<T> BuildWorker(int key)
         {
             var worker = _workerFactory.CreateWorker();
-            return new CacheValue<T>(worker, TimeSpan.FromSeconds(120));
+            return new CacheValue<T>(worker, _settings.WorkerLifetime);
         }
 
         private void CleanUp(object state)
         {
             foreach (var keyValue in _workers.Where(x => x.Value.ExpireDate < DateTime.UtcNow))
             {
-                if (_workers.TryRemove(keyValue.Key, out var cache) && cache is IDisposable dispCache)
+                if (_workers.TryRemove(keyValue.Key, out var cache)
+                    && cache.Value is IDisposable dispCache)
                 {
                     dispCache.Dispose();
                 }

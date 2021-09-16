@@ -2,7 +2,7 @@
 
 namespace Workflow
 {
-    public interface IWorkflowManager<T>
+    public interface IWorkflowForkManagment<T>
     {
         Task PostAsync(T message);
     }
