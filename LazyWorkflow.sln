@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{B7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Direct", "Examples\Direct\Direct.csproj", "{A85DAD66-3D45-4FC1-9D80-40B0CBD17A5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lazy", "Examples\Lazy\Lazy.csproj", "{C93681C5-F7F1-498E-9DFD-0B59807E6BC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +25,17 @@ Global
 		{A85DAD66-3D45-4FC1-9D80-40B0CBD17A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A85DAD66-3D45-4FC1-9D80-40B0CBD17A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A85DAD66-3D45-4FC1-9D80-40B0CBD17A5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C93681C5-F7F1-498E-9DFD-0B59807E6BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C93681C5-F7F1-498E-9DFD-0B59807E6BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C93681C5-F7F1-498E-9DFD-0B59807E6BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C93681C5-F7F1-498E-9DFD-0B59807E6BC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A85DAD66-3D45-4FC1-9D80-40B0CBD17A5A} = {B716EC94-B457-4EC5-AF7C-88EEA3072420}
+		{C93681C5-F7F1-498E-9DFD-0B59807E6BC3} = {B716EC94-B457-4EC5-AF7C-88EEA3072420}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8E899433-0624-4D8A-90BE-3C72A00515A6}

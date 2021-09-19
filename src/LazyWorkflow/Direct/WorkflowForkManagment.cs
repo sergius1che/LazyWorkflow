@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Workflow.Direct
 {
     public class WorkflowForkManagment<T> : IWorkflowForkManagment<T>, IDisposable
+        where T : class
     {
         private readonly Func<T, int> _getMessageKey;
         private readonly IWorkerFactory<T> _workerFactory;
@@ -24,6 +25,7 @@ namespace Workflow.Direct
             _getMessageKey = getMessageKey;
             _workerFactory = workerFactory;
             _settings = settings;
+
             _workers = new ConcurrentDictionary<int, CacheValue<T>>(2, settings.WorkersCapacity);
             _cleanupTimer = new Timer(CleanUp, null, settings.CleanupPeriod, settings.CleanupPeriod);
             _disposed = false;

@@ -3,6 +3,7 @@
 namespace Workflow
 {
     internal class CacheValue<T>
+        where T : class
     {
         private readonly IWorker<T> _worker;
         private readonly TimeSpan _lifetime;

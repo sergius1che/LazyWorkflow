@@ -5,13 +5,14 @@ using Workflow.Direct;
 namespace Workflow.Builders
 {
     public class DirectWorkflowBuilder<T>
+        where T : class
     {
-        private readonly Func<T, int> _getMessageKey;
-        private readonly Func<T, Task> _handleMessage;
+        protected readonly Func<T, int> _getMessageKey;
+        protected readonly Func<T, Task> _handleMessage;
 
-        private TimeSpan? _workerLifetime;
-        private int? _workersCapacity;
-        private TimeSpan? _cleanupPeriod;
+        protected TimeSpan? _workerLifetime;
+        protected int? _workersCapacity;
+        protected TimeSpan? _cleanupPeriod;
 
         public DirectWorkflowBuilder(
             Func<T, int> getMessageKey,
@@ -21,7 +22,7 @@ namespace Workflow.Builders
             _handleMessage = handleMessage ?? throw new ArgumentNullException(nameof(handleMessage));
         }
 
-        public DirectWorkflowBuilder<T> SetWorkerLifeTime(TimeSpan lifetime)
+        public virtual DirectWorkflowBuilder<T> SetWorkerLifeTime(TimeSpan lifetime)
         {
             if (lifetime <= TimeSpan.Zero)
             {
@@ -32,7 +33,7 @@ namespace Workflow.Builders
             return this;
         }
 
-        public DirectWorkflowBuilder<T> SetCleanupPeriod(TimeSpan period)
+        public virtual DirectWorkflowBuilder<T> SetCleanupPeriod(TimeSpan period)
         {
             if (period <= TimeSpan.Zero)
             {
@@ -43,7 +44,7 @@ namespace Workflow.Builders
             return this;
         }
 
-        public DirectWorkflowBuilder<T> SetWorkersCapacity(int capacity)
+        public virtual DirectWorkflowBuilder<T> SetWorkersCapacity(int capacity)
         {
             if (capacity <= 0)
             {
@@ -54,7 +55,7 @@ namespace Workflow.Builders
             return this;
         }
 
-        public IWorkflowForkManagment<T> Build()
+        public virtual IWorkflowForkManagment<T> Build()
         {
             var settings = new WorkflowSettings
             {
@@ -63,7 +64,7 @@ namespace Workflow.Builders
                 WorkersCapacity = _workersCapacity ?? 1024,
             };
 
-            var factory = new WorkflowFactory<T>(_handleMessage);
+            var factory = new WorkerFactory<T>(_handleMessage);
 
             return new WorkflowForkManagment<T>(_getMessageKey, factory, settings);
         }

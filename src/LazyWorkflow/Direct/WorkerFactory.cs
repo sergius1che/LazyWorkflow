@@ -3,11 +3,12 @@ using System.Threading.Tasks;
 
 namespace Workflow.Direct
 {
-    public class WorkflowFactory<T> : IWorkerFactory<T>
+    public class WorkerFactory<T> : IWorkerFactory<T>
+        where T : class
     {
         private readonly Func<T, Task> _handleMessage;
 
-        public WorkflowFactory(Func<T, Task> handleMessage)
+        public WorkerFactory(Func<T, Task> handleMessage)
         {
             _handleMessage = handleMessage;
         }

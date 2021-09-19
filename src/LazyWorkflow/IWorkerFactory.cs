@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Workflow
+﻿namespace Workflow
 {
     public interface IWorkerFactory<T>
+        where T : class
     {
         IWorker<T> CreateWorker();
     }
