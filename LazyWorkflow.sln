@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workflow", "src\LazyWorkflow\Workflow.csproj", "{3A203393-5471-478D-A124-6CCF45B56081}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workflow", "src\LazyWorkflow\Workflow.csproj", "{3A203393-5471-478D-A124-6CCF45B56081}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{B716EC94-B457-4EC5-AF7C-88EEA3072420}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Direct", "Examples\Direct\Direct.csproj", "{A85DAD66-3D45-4FC1-9D80-40B0CBD17A5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{3A203393-5471-478D-A124-6CCF45B56081}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A203393-5471-478D-A124-6CCF45B56081}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A203393-5471-478D-A124-6CCF45B56081}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A85DAD66-3D45-4FC1-9D80-40B0CBD17A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A85DAD66-3D45-4FC1-9D80-40B0CBD17A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A85DAD66-3D45-4FC1-9D80-40B0CBD17A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A85DAD66-3D45-4FC1-9D80-40B0CBD17A5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A85DAD66-3D45-4FC1-9D80-40B0CBD17A5A} = {B716EC94-B457-4EC5-AF7C-88EEA3072420}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8E899433-0624-4D8A-90BE-3C72A00515A6}
