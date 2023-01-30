@@ -1,15 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31624.102
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workflow", "src\LazyWorkflow\Workflow.csproj", "{3A203393-5471-478D-A124-6CCF45B56081}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{B716EC94-B457-4EC5-AF7C-88EEA3072420}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Direct", "Examples\Direct\Direct.csproj", "{A85DAD66-3D45-4FC1-9D80-40B0CBD17A5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Direct", "Examples\Direct\Direct.csproj", "{A85DAD66-3D45-4FC1-9D80-40B0CBD17A5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lazy", "Examples\Lazy\Lazy.csproj", "{C93681C5-F7F1-498E-9DFD-0B59807E6BC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lazy", "Examples\Lazy\Lazy.csproj", "{C93681C5-F7F1-498E-9DFD-0B59807E6BC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{07A96A09-E174-41CD-8759-4FE09E9C6D62}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F77DD51B-A111-4A4E-8AF5-075083690C07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +43,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{3A203393-5471-478D-A124-6CCF45B56081} = {F77DD51B-A111-4A4E-8AF5-075083690C07}
 		{A85DAD66-3D45-4FC1-9D80-40B0CBD17A5A} = {B716EC94-B457-4EC5-AF7C-88EEA3072420}
 		{C93681C5-F7F1-498E-9DFD-0B59807E6BC3} = {B716EC94-B457-4EC5-AF7C-88EEA3072420}
 	EndGlobalSection
